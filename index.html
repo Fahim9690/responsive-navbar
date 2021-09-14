@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .header{
+        width: 100%;
+        height: 15vh;
+        background-color: #f5f5f6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        position: fixed;
+        top: 0;
+    }
+    .navbar a{
+      margin-left: 15px;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-size: 20px;
+    }
+    .social-icon{
+        margin-right: 10px;
+    }
+    .social-icon i{
+        margin-left: 10px;
+    }
+    .toggle >div{
+        /* width: 20px ;
+        height: 3px;
+        background-color: #000;
+        margin: 5px; */
+        width: 1.5rem;
+         height: .2rem;
+         background-color: black;
+         margin: .3rem;
+        
+    }
+    .toggle{
+        display: none;
+        padding: 0 50px;
+    }
+    .MT .bar-1{
+        transform: rotate(-45deg) translate(-3px,4px);
+    }
+    .MT .bar-3{
+        transform: rotate(45deg) translate(-2px,-4px);
+    }
+    .MT .bar-2{
+        display: none;
+    }
+
+    @media (max-width:992px){
+        .toggle{
+            display: block;
+        }
+        .social-icon{
+            display: none;
+        }
+       
+        .navbar{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            clip-path: polygon(0 0,100% 0,100% 0,0 0);
+            transition: all .5s linear;
+        }
+        .navbar a{
+            display: flex;
+            flex-direction: column;
+            padding: .5rem 1.5rem;
+        }
+        .navbar.active{
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        }
+    }
+</style>
+<body>
+    
+        <header class="header">
+            <div class="logo">
+            <a href="#">Logo</a>
+            </div>
+
+            <nav class="navbar">
+                <a href="#"> home</a>
+                <a href="#"> About</a>
+                <a href="#"> section</a>
+                <a href="#"> services</a>
+                <a href="#"> services</a>
+                <a href="#"> services</a>
+            </nav>
+            <div class="social-icon">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                
+            </div>
+            <div class="toggle">
+                <div class="bar-1"></div>
+                <div class="bar-2"></div>
+                <div class="bar-3"></div>
+            </div>
+        </header>
+   
+    <script>
+        const toggle = document.querySelector('.toggle');
+        const navbar = document.querySelector('.navbar');
+
+        toggle.addEventListener('click',() =>{
+            navbar.classList.toggle('active');
+            toggle.classList.toggle('MT');
+
+        });
+        navbar.addEventListener('click',() =>{
+            navbar.classList.remove('active');
+            toggle.classList.toggle('MT');
+        })
+
+    </script>
+    <script src="https://kit.fontawesome.com/16d8137ff5.js" crossorigin="anonymous"></script>
+</body>
+</html>
